@@ -1,20 +1,42 @@
 <template>
     <div class="area-form">
       <h1>LOGIN</h1>
-      <form>
-        <input class="campo-input" placeholder="E-mail" type="email">
-        <input class="campo-input" placeholder="Senha" type="password">
+      <form @submit="login">
+        <input v-model="email" class="campo-input" placeholder="E-mail" type="email">
+        <input v-model="senha" class="campo-input" placeholder="Senha" type="password">
         <router-link class="a-esqueci" to="/">Esqueceu sua senha?</router-link>
         <input class="btn-submit" type="submit"/>
       </form>
     </div>
 </template>
 <script>
-  export default {
-    name: 'NavBar'
+
+
+export default {
+  name: 'NavBar',
+  data(){
+    return {
+      email: null,
+      senha: null
+    }
+  },
+  methods:{
+    async login(e) {
+      e.preventDefault()
+      console.log(process.env.VUE_APP_BASE_URL)
+      // const dados ={
+      //   email: this.email,
+      //   senha: this.senha
+      // }
+
+      // const json = JSON.stringify(dados)
+      
+      // const req = await fetch ()
+    }
   }
+}
 </script>
-<style>
+<style scoped>
   .area-form{
     width: 40%;
     margin-top: 5%;

@@ -5,7 +5,7 @@
     </router-link>
     <div class="area-nav">
       <router-link class="a" to="/">Login</router-link>
-      <router-link class="a" to="/">Registrar-se</router-link>
+      <router-link class="a" to="/registrar">Registrar-se</router-link>
     </div>
   </nav>
 </template>
@@ -25,6 +25,17 @@ export default {
     align-items: center;
     justify-content: space-between;
   }
+  .a:hover{
+    box-shadow: 0em 0.3em 0.5em 0px #a8a8a8;
+  }
+  .a:first-child{
+    background-color: #4854ff;
+  }
+  .a:last-child{
+    background-color: #2D00B4;
+  }
+
+  @media screen and (min-width: 850px){
   img{
     width: 4.5em;
     margin: 0.5em 0em;
@@ -45,13 +56,26 @@ export default {
     padding: 1em;
     border-radius: 1.4em;
   }
-  .a:hover{
-    box-shadow: 0em 0.3em 0.5em 0px #a8a8a8;
+}
+@media screen and (max-width: 849px){
+  img{
+    width: 3em;
   }
-  .a:first-child{
-    background-color: #4854ff;
+  .area-nav {
+    margin: 0.5em 1em;
   }
-  .a:last-child{
-    background-color: #2D00B4;
+  .area-nav:last-child{
+    text-align: end;
   }
+  .a{
+    font-size: 80%;
+    font-family: Arial, Tahoma, sans-serif;
+    color: #FFFF;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0em 0.1em;
+    padding: 0.5em;
+    border-radius: 1.4em;
+  }
+}
 </style>

@@ -2,7 +2,7 @@
     <div class="area-img">
       <div class="conteudo">
         <h1>Não tem conta ainda?</h1>
-        <router-link class="btn-registrar" to="/">Registrar-se</router-link>
+        <router-link class="btn-registrar" to="/registrar">Registrar-se</router-link>
       </div>
     </div>
 </template>
