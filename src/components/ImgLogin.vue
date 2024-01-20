@@ -1,7 +1,7 @@
 <template>
     <div class="area-img">
       <div class="conteudo">
-        <h1>Não tem conta ainda?</h1>
+        <h1>Ainda não tem uma conta?</h1>
         <router-link class="btn-registrar" to="/registrar">Registrar-se</router-link>
       </div>
     </div>
