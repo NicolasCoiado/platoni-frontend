@@ -16,7 +16,7 @@
     </div>
 </template>
 <script>
-
+import axios from "axios";
 
 export default {
   name: 'NavBar',
@@ -28,16 +28,25 @@ export default {
   },
   methods:{
     async login(e) {
+      const api = import.meta.env.VITE_API
       e.preventDefault()
-      console.log(process.env.VUE_APP_BASE_URL)
-      // const dados ={
-      //   email: this.email,
-      //   senha: this.senha
-      // }
+    
+      const dados ={
+        email: this.email,
+        senha: this.senha
+      }
 
       // const json = JSON.stringify(dados)
       
-      // const req = await fetch ()
+      // axios
+      // .post(api+"/", json)
+      // .then((res) => {
+      //    console.log(res)
+      // })
+      // .catch((error) => {
+      //    console.log(error);
+      // });
+      
     }
   }
 }
