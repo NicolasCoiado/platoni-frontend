@@ -20,14 +20,14 @@ export default {
 *{
   font-family: Arial, Helvetica, sans-serif;
 }
-@media screen and (min-width: 850px){
+@media screen and (min-width: 1000px){
   .areas{
     display: flex;
     justify-content: center;
     width: 100%;
   }
 }
-@media screen and (max-width: 849px){
+@media screen and (max-width: 999px){
   .img-login{
     display: none;
   }

@@ -2,8 +2,9 @@
     <div class="area-form">
       <h1>LOGIN</h1>
       <form @submit="login">
-        <input v-model="email" class="campo-input" placeholder="E-mail" type="email">
-        <input v-model="senha" class="campo-input" placeholder="Senha" type="password">
+        <input v-model="email" class="campo-input" placeholder="E-mail" type="email" required>
+        <input v-model="senha" class="campo-input" placeholder="Senha" type="password" required>
+        <Message msg="E-mail ou senha incorretos." classe="erro" v-show="incorreto"/>
         <router-link class="a-esqueci" to="/">Esqueceu sua senha?</router-link>
         <input class="btn-submit" type="submit"/>
         <div class="area-registrar">
@@ -17,35 +18,38 @@
 </template>
 <script>
 import axios from "axios";
+import Message from "./Message.vue"
 
 export default {
-  name: 'NavBar',
+  name: 'FormLogin',
   data(){
     return {
       email: null,
-      senha: null
+      senha: null,
+      incorreto: null
     }
+  },components:{
+    Message
   },
   methods:{
     async login(e) {
-      const api = import.meta.env.VITE_API
       e.preventDefault()
+      const api = import.meta.env.VITE_API
     
       const dados ={
         email: this.email,
         senha: this.senha
       }
 
-      // const json = JSON.stringify(dados)
-      
-      // axios
-      // .post(api+"/", json)
-      // .then((res) => {
-      //    console.log(res)
-      // })
-      // .catch((error) => {
-      //    console.log(error);
-      // });
+      axios
+        .post(api, dados)
+        .then((res) => {
+          sessionStorage.setItem("token", res.data.token);
+          console.log(res.data.msg)
+        })
+        .catch((error) => {
+          this.incorreto = true
+        });
       
     }
   }
@@ -54,7 +58,7 @@ export default {
 <style scoped>
 
 
-  @media screen and (min-width: 850px){
+  @media screen and (min-width: 1000px){
     .area-form{
       width: 40%;
       margin-top: 5%;
@@ -77,9 +81,6 @@ export default {
       font-size: 1.2em;
       margin-bottom: 1em;
     }
-    .a-esqueci{
-      margin-bottom: 1em;
-    }
     .btn-submit{
       font-size: 1.3em;
       padding: 0.6em;
@@ -90,10 +91,9 @@ export default {
       width: 10em;
     }
   }
-  @media screen and (max-width: 849px){
+  @media screen and (max-width: 999px){
     .area-form{
       margin: 10% 5%;
-      box-shadow: 0em 0em 1em 0em #686868;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -109,8 +109,14 @@ export default {
       font-size: 1em;
       margin-bottom: 2em;
     }
+    .infos-area{
+      display: flex;
+      flex-direction:column-reverse;
+      text-align: left;
+    }
     .a-esqueci{
-      margin-bottom: 2em;
+      font-size: 0.9em;
+      text-align: center;
     }
     .btn-submit{
       font-size: 1.1em;
@@ -126,6 +132,7 @@ export default {
     }
     .area-registrar p {
       margin: 1.5em 0em;
+      font-size: 0.9em;
     }
     .btn-registrar{
       font-size: 1.1em;
@@ -158,6 +165,8 @@ export default {
     color: #2D00B4;
     font-style: italic;
     text-decoration: none;
+    margin-bottom: 2em;
+    margin-top: 2em;
   }
   .btn-submit{
     background-color: #4854ff;
