@@ -8,6 +8,7 @@
 <script>
 import NavDeslogado from "./NavDeslogado.vue"
 import NavLogado from "./NavLogado.vue"
+import {useStore} from "../store/store.js";
 
 export default {
   name: 'NavBar',
@@ -21,20 +22,29 @@ export default {
     NavLogado
   },
   mounted(){
-    this.verificarToken();
-    this.verificarTokenInterval = setInterval(() => {
-      this.verificarToken();
-    }, 1);
+    // this.verificarToken();
+    const store = useStore();
+    store.$subscribe((mutation) => {
+      if (mutation.type === 'setToken') {
+        console.log("Vamo")
+        this.verificarToken();
+      }
+    });
+    // this.verificarTokenInterval = setInterval(() => {
+    //   this.verificarToken();
+    // }, 1);
   },
   methods: {
     async verificarToken() {
-      const token = sessionStorage.getItem("token")
+      const store = useStore();
+      const token = store.verToken
       console.log(token)
-      if (token) {
-        this.logado = true;
-      } else {
-        this.logado = false;
-      }
+
+      // if (token) {
+      //   this.logado = true;
+      // } else {
+      //   this.logado = false;
+      // }
     }
   }
 }

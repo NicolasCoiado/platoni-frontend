@@ -19,6 +19,7 @@
 <script>
 import axios from "axios";
 import Message from "./Message.vue"
+import {useStore} from "../store/store.js";
 
 export default {
   name: 'FormLogin',
@@ -41,14 +42,17 @@ export default {
         senha: this.senha
       }
 
+      const store = useStore();
+
       axios
         .post(api, dados)
         .then((res) => {
-          sessionStorage.setItem("token", res.data.token);
-          console.log(res.data.msg)
+          store.setToken(res.data.token);
+          console.log(res.data.msg);
         })
         .catch((error) => {
           this.incorreto = true
+          console.log(error)
         });
       
     }
