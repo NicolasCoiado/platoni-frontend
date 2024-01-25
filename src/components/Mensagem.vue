@@ -3,7 +3,7 @@
 </template>
 <script>
     export default {
-        name: "Message",
+        name: "Mensagem",
         props: {
             msg: String,
             classe: String
@@ -14,8 +14,5 @@
     .erro{
         font-style: italic;
         color:brown;
-    }
-    .normal{
-        
     }
 </style>

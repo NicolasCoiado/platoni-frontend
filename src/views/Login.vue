@@ -1,16 +1,19 @@
 <template>
+  <Navbar />
   <body class="areas">
     <FormLogin/>
     <ImgLogin class="img-login"/>
   </body>
 </template>
 <script>
+import Navbar from "../components/Navbar.vue"
 import FormLogin from "../components/FormLogin.vue"
 import ImgLogin from "../components/ImgLogin.vue"
 
 export default {
   name: 'LoginHome',
   components:{
+    Navbar,
     FormLogin,
     ImgLogin
   }

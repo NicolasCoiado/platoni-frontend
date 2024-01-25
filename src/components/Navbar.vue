@@ -22,29 +22,18 @@ export default {
     NavLogado
   },
   mounted(){
-    // this.verificarToken();
-    const store = useStore();
-    store.$subscribe((mutation) => {
-      if (mutation.type === 'setToken') {
-        console.log("Vamo")
-        this.verificarToken();
-      }
-    });
-    // this.verificarTokenInterval = setInterval(() => {
-    //   this.verificarToken();
-    // }, 1);
+    this.verificarToken();
   },
   methods: {
     async verificarToken() {
       const store = useStore();
       const token = store.verToken
-      console.log(token)
 
-      // if (token) {
-      //   this.logado = true;
-      // } else {
-      //   this.logado = false;
-      // }
+      if (token) {
+        this.logado = true;
+      } else {
+        this.logado = false;
+      }
     }
   }
 }

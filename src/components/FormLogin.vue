@@ -4,7 +4,7 @@
       <form @submit="login">
         <input v-model="email" class="campo-input" placeholder="E-mail" type="email" required>
         <input v-model="senha" class="campo-input" placeholder="Senha" type="password" required>
-        <Message msg="E-mail ou senha incorretos." classe="erro" v-show="incorreto"/>
+        <Mensagem msg="E-mail ou senha incorretos." classe="erro" v-show="incorreto"/>
         <router-link class="a-esqueci" to="/">Esqueceu sua senha?</router-link>
         <input class="btn-submit" type="submit"/>
         <div class="area-registrar">
@@ -18,7 +18,7 @@
 </template>
 <script>
 import axios from "axios";
-import Message from "./Message.vue"
+import Mensagem from "./Mensagem.vue"
 import {useStore} from "../store/store.js";
 
 export default {
@@ -30,7 +30,7 @@ export default {
       incorreto: null
     }
   },components:{
-    Message
+    Mensagem
   },
   methods:{
     async login(e) {
@@ -49,12 +49,17 @@ export default {
         .then((res) => {
           store.setToken(res.data.token);
           console.log(res.data.msg);
+          this.$router.push({ path: "/certificados" });
         })
         .catch((error) => {
           this.incorreto = true
           console.log(error)
-        });
-      
+        })
+        // setTimeout(this.deslogar, 3600000);
+        setTimeout(this.deslogar, 5000);
+    },
+    async deslogar() {
+          console.log(this.deslogar)
     }
   }
 }

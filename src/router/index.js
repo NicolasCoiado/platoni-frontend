@@ -1,16 +1,22 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import LoginHome from "../views/LoginHome.vue";
+import Login from "../views/Login.vue";
 import CadastroUsuario from "../views/CadastroUsuario.vue";
+import Certificados from "../views/Certificados.vue";
 const routes = [
   {
     path: "/",
-    name: "LoginHome",
-    component: LoginHome,
+    name: "Login",
+    component: Login,
   },
   {
     path: "/registrar",
     name: "CadastroUsuario",
     component: CadastroUsuario,
+  },
+  {
+    path: "/certificados",
+    name: "Certificados",
+    component: Certificados,
   },
 ];
 

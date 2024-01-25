@@ -3,7 +3,7 @@
     <img class="img-nav" src="../assets/logo.png" alt="Logo Platoni">
   </router-link>
   <div class="area-nav">
-    <router-link class="a" to="/">Meus certificados</router-link>
+    <router-link class="a" to="/certificados">Meus certificados</router-link>
     <router-link class="a" to="/registrar">Minha conta</router-link>
   </div>
 </template>
@@ -30,9 +30,9 @@ export default {
     width: 4.5em;
     margin: 0.5em 0em;
   }
-  .area-nav {
+  .area-nav:first-child {
     margin: 0em 5em;
-    width: 50%;
+    width: 10%;
   }
   .area-nav:last-child{
     text-align: end;
@@ -51,11 +51,14 @@ export default {
   img{
     width: 3em;
   }
-  .area-nav {
+  .area-nav:first-child {
     margin: 0.5em 1em;
+    width: 10%;
   }
   .area-nav:last-child{
     text-align: end;
+    font-size: 0.8em;
+    margin: 0.5em 1em;
   }
   .a{
     font-size: 80%;

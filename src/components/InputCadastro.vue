@@ -9,12 +9,12 @@
         <input class="input-txt" type="password" name="senha" v-model="senha" minlength="8" required>
         <label>Confirme sua senha</label>
         <input class="input-txt" type="password" name="confsenha" v-model="confsenha" minlength="8" required>
-        <Message :msg="mensagem" classe="erro" v-show="correspSenhas"/>
+        <Mensagem :msg="mensagem" classe="erro" v-show="correspSenhas"/>
         <input class="btn-submit" type="submit"/>
     </form>
 </template>
 <script>
-import Message from "../components/Message.vue"
+import Mensagem from "../components/Mensagem.vue"
 import axios from "axios"
 
 export default {
@@ -29,7 +29,7 @@ export default {
       mensagem: null
     }
   },components:{
-    Message
+    Mensagem
   },
   methods:{
     async cadastro(e) {
@@ -117,7 +117,7 @@ label{
 .input-txt{
     font-size: 0.9em;
     background-color: #ffffff;
-    border-radius: 1.4em;
+    border-radius: 0.5em;
     margin-bottom: 1em;
     border-top: 2px #c7c7c7 solid;
     border-bottom: 2px #c7c7c7 solid;
