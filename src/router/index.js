@@ -1,7 +1,8 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import Login from "../views/Login.vue";
 import CadastroUsuario from "../views/CadastroUsuario.vue";
 import Certificados from "../views/Certificados.vue";
+
 const routes = [
   {
     path: "/",
@@ -21,7 +22,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 });
 

@@ -1,7 +1,6 @@
 <template>
     <div class="galeria">
         <router-link to="/" class="btn-add-cert">+</router-link>
-        
     </div>
 </template>
 <script>
@@ -17,8 +16,8 @@
 }
 .btn-add-cert{
     background-color: #717af8;
-    margin: 2vh 2vw;
-    padding: 10vh 10vw;
+    margin: 5vh 1.5vw;
+    padding: 10vh 9vw;
     color: #FFFF;
     text-align: center;
     text-decoration: none;

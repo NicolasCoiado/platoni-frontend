@@ -1,13 +1,12 @@
 <template>
-  <nav>
-      <NavLogado v-if="logado"/>
-      <NavDeslogado  v-else/>
-  </nav>
+  <nav></nav>
+    <NavLogado v-if="logado"/>
+    <NavDeslogado  v-else/>
 </template>
 
 <script>
-import NavDeslogado from "./NavDeslogado.vue"
-import NavLogado from "./NavLogado.vue"
+import NavDeslogado from "./NavDeslogado.vue";
+import NavLogado from "./NavLogado.vue";
 import {useStore} from "../store/store.js";
 
 export default {
@@ -38,14 +37,5 @@ export default {
   }
 }
 </script>
-
 <style scoped>
-  nav {
-    width: 100%;
-    background-color: #FFFF;
-    box-shadow: 0em 0.5em 1em 0px #a8a8a8;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
 </style>

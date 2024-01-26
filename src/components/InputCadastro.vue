@@ -79,7 +79,6 @@ h1{
     box-shadow: 0em 0em 1em 0em #686868;
     display:  flex;
     flex-direction: column;
-    background-color: #f8f8fa;
   }
   h1{
     font-size: 3em;
@@ -92,7 +91,6 @@ h1{
     box-shadow: 0em 0em 1em 0em #686868;
     display:  flex;
     flex-direction: column;
-    background-color: #f8f8fa;
   }
   h1{
     font-size: 3em;
@@ -112,29 +110,28 @@ h1{
 }
 
 label{
-    margin-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 .input-txt{
-    font-size: 0.9em;
-    background-color: #ffffff;
-    border-radius: 0.5em;
-    margin-bottom: 1em;
-    border-top: 2px #c7c7c7 solid;
-    border-bottom: 2px #c7c7c7 solid;
-    border-left: 2px #c7c7c7 solid;
-    border-right: 2px #c7c7c7 solid;
+  font-size: 0.9em;
+  border-radius: 0.5em;
+  margin-bottom: 1em;
+  border-top: 2px #c7c7c7 solid;
+  border-bottom: 2px #c7c7c7 solid;
+  border-left: 2px #c7c7c7 solid;
+  border-right: 2px #c7c7c7 solid;
 }
 .btn-submit{
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #FFFF;
-    background-color: #4854ff;
-    border: none;
-    border-radius: 1.4em;
-    padding: 0.5em;
-    margin-top: 1em;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #FFFF;
+  background-color: #4854ff;
+  border: none;
+  border-radius: 1.4em;
+  padding: 0.5em;
+  margin-top: 1em;
 }
 .btn-submit:hover{
-    box-shadow: 0em 0.3em 0.5em 0px #a8a8a8;
-  }
+  box-shadow: 0em 0.3em 0.5em 0px #a8a8a8;
+}
 </style>

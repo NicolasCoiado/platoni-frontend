@@ -2,8 +2,8 @@
     <div class="area-form">
       <h1>LOGIN</h1>
       <form @submit="login">
-        <input v-model="email" class="campo-input" placeholder="E-mail" type="email" required>
-        <input v-model="senha" class="campo-input" placeholder="Senha" type="password" required>
+        <input v-model="email" class="campo-input" placeholder="E-mail" type="email"  name="email" autocomplete="email" required/>
+        <input v-model="senha" class="campo-input" placeholder="Senha" type="password" name="senha" autocomplete="current-password" required/>
         <Mensagem msg="E-mail ou senha incorretos." classe="erro" v-show="incorreto"/>
         <router-link class="a-esqueci" to="/">Esqueceu sua senha?</router-link>
         <input class="btn-submit" type="submit"/>
@@ -55,11 +55,12 @@ export default {
           this.incorreto = true
           console.log(error)
         })
-        // setTimeout(this.deslogar, 3600000);
-        setTimeout(this.deslogar, 5000);
+        setTimeout(this.deslogar, 3600000);
     },
     async deslogar() {
-          console.log(this.deslogar)
+      const store = useStore();
+      store.setToken(null);
+      this.$router.push({ path: "/" });
     }
   }
 }
@@ -89,6 +90,9 @@ export default {
     .campo-input{
       font-size: 1.2em;
       margin-bottom: 1em;
+    }
+    .a-esqueci{
+      margin-top: 1em;
     }
     .btn-submit{
       font-size: 1.3em;
@@ -175,7 +179,6 @@ export default {
     font-style: italic;
     text-decoration: none;
     margin-bottom: 2em;
-    margin-top: 2em;
   }
   .btn-submit{
     background-color: #4854ff;
