@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div class="areas-nav">
-      <router-link class="btn-logo" to="/">.</router-link>
+      <router-link class="btn-logo" to="/"></router-link>
       <button class="btn-menu" :class="{ 'btn-menu-ativo': estadoMenu }" @click="abrirMenu">.</button>
       <div class="area-btns">
         <router-link class="a-link" to="/">Login</router-link>

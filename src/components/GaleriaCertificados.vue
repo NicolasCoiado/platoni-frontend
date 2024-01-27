@@ -1,28 +1,95 @@
 <template>
+  <div class="container">
     <div class="galeria">
-        <router-link to="/" class="btn-add-cert">+</router-link>
+      <router-link to="/" id="btn-add" class="cert"></router-link>
+      <Certificado class="cert" v-for="certificado in certificados" :key="certificado.id_certificado" :id_certificado="certificado.id_certificado" :nome_certificado="certificado.nome_certificado" :img="certificado.url"/>
     </div>
+  </div>
 </template>
 <script>
+  import axios from "axios";
+  import {useStore} from "../store/store.js";
+  import Certificado from "./Certificado.vue";
   export default {
-    name: 'GaleriaCertificados'
+    name: 'GaleriaCertificados',
+    data(){
+      return {
+        certificados : []
+      }
+    },
+    components:{
+      Certificado
+    },
+    mounted(){
+      this.getId();
+    },
+    methods:{
+      async getId(){
+        const api = import.meta.env.VITE_API
+        const store = useStore()
+        const jwt = store.verToken
+        
+        axios
+        .get(api+"get_id", {headers: {Authorization: "Bearer "+jwt}})
+        .then((res) => {
+          this.listarCertificados(res.data.id);
+        })
+        .catch((error) => {
+          if(error.response.data.msg === "Token inválido."){
+            this.$router.push({ path: "/" });
+            console.error(error.response.data.msg)
+          }else{
+            console.error(error.response.data.msg)
+          }
+        })
+      },
+      async listarCertificados(id_usuario) {
+        const api = import.meta.env.VITE_API;
+        const store = useStore();
+        const jwt = store.verToken;
+        const params = {id_usuario: id_usuario};
+
+        axios
+        .post(api + "listar_cert", params, {headers: {Authorization: "Bearer " + jwt}})
+        .then((res)=>{
+          console.log(res.data.msg);
+          this.certificados = res.data.certificados;
+        })
+        .catch((error)=>{
+          console.error(error);
+        })
+      }
+    }
   }
 </script>
 <style scoped>
-.galeria{
+  .container{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .galeria{
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
     flex-wrap:wrap;
-}
-.btn-add-cert{
+  }
+  #btn-add{
     background-color: #717af8;
-    margin: 5vh 1.5vw;
-    padding: 10vh 9vw;
+    background-image: url("../assets/icon+.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #FFFF;
-    text-align: center;
-    text-decoration: none;
-    font-size: 800%;
-    font-weight: bold;
-}
+  }
+  .cert{
+    background-size: cover;
+    background-position: center;
+    width: 20em;
+    height: 15em;
+    margin: 1vw;
+  }
 </style>
     

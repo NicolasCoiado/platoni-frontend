@@ -50,7 +50,6 @@ h1{
   transition: opacity 0.5s;
 }
 .area-img:hover .conteudo{
-  
   opacity: 1;
 }
 
