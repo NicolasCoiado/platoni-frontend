@@ -63,33 +63,49 @@
   }
 </script>
 <style scoped>
-  .container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.galeria{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+#btn-add{
+  background-color: #717af8;
+  background-image: url("../assets/icon+.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #FFFF;
+}
+.cert{
+  background-size: cover;
+  background-position: center;
+}
+@media screen and (min-width: 500px){
   .galeria{
     width: 80vw;
-    display: flex;
-    flex-direction: row;
-    justify-content:center;
-    flex-wrap:wrap;
-  }
-  #btn-add{
-    background-color: #717af8;
-    background-image: url("../assets/icon+.png");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #FFFF;
   }
   .cert{
-    background-size: cover;
-    background-position: center;
     width: 20em;
     height: 15em;
     margin: 1vw;
   }
+}@media screen and (max-width: 499px){
+    .galeria{
+      width: 95vw;
+    }
+    .cert{
+    width: 20em;
+    height: 10em;
+    margin: 2vw;
+  }
+}
+  
 </style>
     

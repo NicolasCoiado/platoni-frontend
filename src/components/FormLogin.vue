@@ -5,7 +5,7 @@
         <input v-model="email" class="campo-input" placeholder="E-mail" type="email"  name="email" autocomplete="email" required/>
         <input v-model="senha" class="campo-input" placeholder="Senha" type="password" name="senha" autocomplete="current-password" required/>
         <Mensagem msg="E-mail ou senha incorretos." classe="erro" v-show="incorreto"/>
-        <router-link class="a-esqueci" to="/">Esqueceu sua senha?</router-link>
+        <router-link class="a-esqueci" to="/recuperacao">Esqueceu sua senha?</router-link>
         <input class="btn-submit" type="submit"/>
         <div class="area-registrar">
           <p>Ainda não tem uma conta?</p>
