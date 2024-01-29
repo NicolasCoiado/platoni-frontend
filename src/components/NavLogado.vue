@@ -9,12 +9,12 @@
       </div>
     </div>
     <div v-show="estadoMenu" class="mini-drop">
-        <router-link class="btn-mini-drop" to="/certificados">Minha Conta</router-link>
+        <router-link class="btn-mini-drop" to="/perfil">Minha Conta</router-link>
         <button class="btn-mini-drop" @click="deslogar">Deslogar</button>
     </div>
     <div v-show="estadoMenu" class="area-drop">
         <router-link class="a-link" to="/certificados">Meus certificados</router-link>
-        <router-link class="a-link" id="nth-two" to="/">Minha conta</router-link>
+        <router-link class="a-link" id="nth-two" to="/perfil">Minha conta</router-link>
         <button class="a-link" @click="deslogar">Deslogar</button>
     </div>
   </nav>
