@@ -4,6 +4,7 @@ import CadastroUsuario from "../views/CadastroUsuario.vue";
 import Certificados from "../views/Certificados.vue";
 import Recuperacao from "../views/Recuperacao.vue";
 import Perfil from "../views/Perfil.vue";
+import EditEmail from "../views/EditEmail.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/perfil",
     name: "Perfil",
     component: Perfil,
+  },
+  {
+    path: "/editar/email",
+    name: "EditEmail",
+    component: EditEmail,
   },
 ];
 

@@ -11,6 +11,9 @@
     }
 </script>
 <style scoped>
+    *{
+    font-family: Arial, Helvetica, sans-serif;
+    }
     .erro{
         font-style: italic;
         color:brown;
