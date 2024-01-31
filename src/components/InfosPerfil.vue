@@ -16,6 +16,7 @@
             <router-link class="btn-edit" to="/editar/email"></router-link>
         </div>
         <router-link class="btn-edit-senha" to="/recuperacao">Editar senha</router-link>
+        <router-link class="btn-delete" to="/delete/usuario">Deletar conta</router-link>
     </div>
 </template>
 <script>
@@ -152,7 +153,7 @@ export default {
     font-weight: bold;
     color: #FFFF;
     background-color: #2D00B4;
-
+    margin-bottom: 3em;
   }
   .campo-input{
     width: 80%;
@@ -182,6 +183,16 @@ export default {
     background-color: #4854ff;
     margin-left: 1.5em;
   }
+  .btn-delete{
+        border-radius: 2em;
+        padding: 0.5em;
+        text-align: center;
+        text-decoration:none;
+        font-weight: bold;
+        color: #FFFF;
+        background-color: rgb(253, 73, 73);
+        margin-bottom: 3em;
+    }
 }
 @media screen and (max-width: 1049px) and (min-width: 800px){
     .area-form{
@@ -225,7 +236,7 @@ export default {
         font-weight: bold;
         color: #FFFF;
         background-color: #2D00B4;
-
+        margin-bottom: 3em;
     }
     .campo-input{
         width: 80%;
@@ -254,6 +265,16 @@ export default {
         color: #FFFF;
         background-color: #4854ff;
         margin-left: 1.5em;
+    }
+    .btn-delete{
+        border-radius: 2em;
+        padding: 0.5em;
+        text-align: center;
+        text-decoration:none;
+        font-weight: bold;
+        color: #FFFF;
+        background-color: rgb(253, 73, 73);
+        margin-bottom: 3em;
     }
 }
 @media screen and (max-width: 799px){
@@ -296,7 +317,7 @@ export default {
         font-weight: bold;
         color: #FFFF;
         background-color: #2D00B4;
-
+        margin-bottom: 3em;
     }
     .campo-input{
         font-size: 1em;
@@ -330,6 +351,16 @@ export default {
         border: none;
         border-radius: 2em;
         padding: 0.5em;
+    }
+    .btn-delete{
+        width: 100%;
+        padding: 2vh 0%;
+        border-radius: 2em;
+        text-align: center;
+        text-decoration:none;
+        font-weight: bold;
+        color: #FFFF;
+        background-color: rgb(253, 73, 73);
     }
 }
 </style>

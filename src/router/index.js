@@ -5,6 +5,7 @@ import Certificados from "../views/Certificados.vue";
 import Recuperacao from "../views/Recuperacao.vue";
 import Perfil from "../views/Perfil.vue";
 import EditEmail from "../views/EditEmail.vue";
+import DeleteUsuario from "../views/DeleteUsuario.vue";
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: "/editar/email",
     name: "EditEmail",
     component: EditEmail,
+  },
+  {
+    path: "/delete/usuario",
+    name: "DeleteUsuario",
+    component: DeleteUsuario,
   },
 ];
 
