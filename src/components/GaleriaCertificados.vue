@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="galeria">
-      <router-link to="/" id="btn-add" class="cert"></router-link>
+      <router-link to="/cadastro/certificados" id="btn-add" class="cert"></router-link>
       <Certificado class="cert" v-for="certificado in certificados" :key="certificado.id_certificado" :id_certificado="certificado.id_certificado" :nome_certificado="certificado.nome_certificado" :img="certificado.url"/>
     </div>
   </div>

@@ -6,6 +6,7 @@ import Recuperacao from "../views/Recuperacao.vue";
 import Perfil from "../views/Perfil.vue";
 import EditEmail from "../views/EditEmail.vue";
 import DeleteUsuario from "../views/DeleteUsuario.vue";
+import CadastroCert from "../views/CadastroCert.vue";
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: "/delete/usuario",
     name: "DeleteUsuario",
     component: DeleteUsuario,
+  },
+  {
+    path: "/cadastro/certificados",
+    name: "CadastroCert",
+    component: CadastroCert,
   },
 ];
 
