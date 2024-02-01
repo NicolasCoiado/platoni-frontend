@@ -10,12 +10,14 @@
         <label class="input-file" for="imagem">{{msgFile}}</label>
         <input @change="inputFile" type="file" name="imagem" id="imagem" accept="image/png, image/jpeg" />
         <button class="btn-clean" v-show="file" @click="cleanFile">Retirar imagem</button>
+        <Mensagem msg="Os campos de nome e imagem são obrigatórios." classe="erro" v-show="erro"/>
         <input class="btn-submit" type="submit"/>
     </form>
 </template>
 <script>
 import axios from "axios";
 import {useStore} from "../store/store.js";
+import Mensagem from "../components/Mensagem.vue";
 
 export default {
   name: 'FormCertificado',
@@ -27,8 +29,12 @@ export default {
       id: null,
       imagem: null,
       file: false,
-      msgFile: "Imagem *"
+      msgFile: "Imagem *",
+      erro: false
     }
+  },
+  components:{
+    Mensagem
   },
   mounted(){
     this.getId();
@@ -78,10 +84,12 @@ export default {
       axios
       .post(api + "cadastro_cert", form, {headers: {Authorization: "Bearer " + jwt}})
       .then((res)=>{
-        console.log(res);
+        console.log(res.data.msg);
+        this.$router.push({ path: "/certificados" });
       })
       .catch((error)=>{
-        console.error(error);
+        this.erro = true
+        console.error("Os campos de nome e imagem são obrigatórios.");
       })
     }
   }
@@ -118,6 +126,7 @@ input[type='file'] {
   border-radius: 0.5em;
   margin-top: 2%;
   border: none;
+  margin-bottom: 3%;
 }
 .btn-clean:hover{
   box-shadow: 0em 0.3em 0.5em 0px #a8a8a8;

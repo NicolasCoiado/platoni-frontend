@@ -13,6 +13,22 @@
       id_certificado: Number,
       nome_certificado: String,
       img: String
+    },
+    data(){
+        return{
+
+        }
+    },
+    mounted(){
+        this.definirRota()
+    },
+    methods:{
+        definirRota(){
+            let certificado
+            certificado = this.nome_certificado.substring(0, 10)
+            certificado = certificado.toLowerCase();
+            console.log(certificado)
+        }
     }
   };
 </script>
@@ -24,14 +40,16 @@
         height: 100%;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
+        text-decoration: none;
         color: #FFFF;
         font-size: 150%;
         display: flex;
         align-items: center;
         justify-content: center;
+        opacity: 0;
     }
     .front:hover{
-        opacity: 0;
+        opacity: 1;
     }
     h1{
         margin: 5%;
