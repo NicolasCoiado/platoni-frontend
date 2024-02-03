@@ -51,7 +51,7 @@ const routes = [
     component: CadastroCert,
   },
   {
-    path: "/certificados/:certificado/:codigo",
+    path: "/certificado/:codigo",
     name: "PageCert",
     component: PageCert,
   },

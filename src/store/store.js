@@ -5,6 +5,7 @@ export const useStore = defineStore("store", {
     return {
       token: null,
       email: null,
+      idCert: null,
     };
   },
   getters: {
@@ -14,6 +15,9 @@ export const useStore = defineStore("store", {
     verEmail() {
       return this.email;
     },
+    verId() {
+      return this.idCert;
+    },
   },
   actions: {
     setToken(value) {
@@ -21,6 +25,9 @@ export const useStore = defineStore("store", {
     },
     setEmail(value) {
       this.email = value;
+    },
+    setId(value) {
+      this.idCert = value;
     },
   },
 });

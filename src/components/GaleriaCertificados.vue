@@ -24,7 +24,7 @@
       this.getId();
     },
     methods:{
-      async getId(){
+      getId(){
         const api = import.meta.env.VITE_API
         const store = useStore()
         const jwt = store.verToken
@@ -43,7 +43,7 @@
           }
         })
       },
-      async listarCertificados(id_usuario) {
+      listarCertificados(id_usuario) {
         const api = import.meta.env.VITE_API;
         const store = useStore();
         const jwt = store.verToken;

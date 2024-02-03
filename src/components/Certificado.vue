@@ -1,36 +1,45 @@
 <template>
     <div :style="{ 'background-image': 'url(' + img + ')' }">
-        <div class="front">
+        <router-link  :to="{ name: 'PageCert', params: { codigo: this.codigo }}" class="front">
             <h1>{{ nome_certificado }}</h1>
-        </div>
+        </router-link>
     </div>
 </template>
   
 <script>
-  export default {
-    name: "Certificado",
-    props: {
-      id_certificado: Number,
-      nome_certificado: String,
-      img: String
-    },
+import CryptoJS from 'crypto-js'
+
+export default {
+    name:   "Certificado",
     data(){
         return{
-
+            nome: null,
+            codigo: null
         }
     },
-    mounted(){
-        this.definirRota()
+    props: {
+        id_certificado: Number,
+        nome_certificado: String,
+        img: String
     },
-    methods:{
+    created(){
+        this.definirRota();
+    },
+    methods: {
         definirRota(){
-            let certificado
-            certificado = this.nome_certificado.substring(0, 10)
-            certificado = certificado.toLowerCase();
-            console.log(certificado)
+            const agora = new Date().getTime();
+            const string = agora.toString();
+            const substring = string.substring(0, 13);
+            
+            const secret = import.meta.env.VITE_SECRET;
+
+            const codp1 = substring + this.id_certificado;
+            const codp2 = CryptoJS.AES.encrypt(codp1, secret).toString();
+            
+            this.codigo = codp2;
         }
     }
-  };
+};
 </script>
 <style scoped>
     .front{
