@@ -1,16 +1,18 @@
 <template>
-    <p>Certificado Logado</p>
+  <p>Logado</p>
 </template>
 <script>
 export default {
   name: 'CertificadoLogado',
+  created(){
+    
+  },
   data(){
     return{
     }
   },
   props: {
-    id_certificado: String,
-    token: String
+    infos: Object
   }
 }
 </script>

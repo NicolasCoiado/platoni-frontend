@@ -1,6 +1,11 @@
 <template>
-    <CertificadoLogado v-if="token" :id_certificado="id_certificado" :token="token"/>
-    <CertificadoDeslogado v-else :id_certificado="id_certificado"/>
+    <div v-if="infosCert">
+        <CertificadoLogado v-if="dono" :infos="infosCert"/>
+        <CertificadoDeslogado v-else :infos="infosCert"/>
+    </div>
+    <div v-else>
+        <p>Carregando...</p>
+    </div>
 </template>
 <script>
 import CertificadoLogado from "./CertificadoLogado.vue";
@@ -18,8 +23,10 @@ export default {
   data(){
     return{
         token: null,
+        api: import.meta.env.VITE_API,
         id_usuario: null,
-        api: import.meta.env.VITE_API
+        infosCert: null,
+        dono: null
     }
   },
   props: {
@@ -30,39 +37,58 @@ export default {
   },
   methods:{
     verificaToken(){
-      const api = this.api
       const store = useStore()
       const jwt = store.verToken
-      this.token = jwt
-      
-      axios
-      .get(api+"get_id", {headers: {Authorization: "Bearer "+this.token}})
-      .then((res) => {
-          this.id_usuario = res.data.id
-          this.verificaUsuario()
-      })
-      .catch((error) => {
-          if(error.response.data.msg === "Token inválido."){
-              this.$router.push({ path: "/" });
-              console.error(error.response.data.msg)
-          }else{
-              console.error(error.response.data.msg)
-          }
-      })
+
+      if(jwt){
+        this.token = jwt
+        this.getIdUser()
+      }else{
+        this.dono = false
+      }
     },
-    verificaUsuario(){
+    getIdUser(){
       const api = this.api
+      axios
+        .get(api+"get_id", {headers: {Authorization: "Bearer "+this.token}})
+        .then((res) => {
+            this.id_usuario = res.data.id
+            this.reqCert()          
+        })
+        .catch((error) => {
+            if(error.response.data.msg === "Token inválido."){
+                this.$router.push({ path: "/" });
+                console.error(error.response.data.msg)
+            }else{
+                console.error(error.response.data.msg)
+            }
+        })
+    },
+    reqCert(){
+      const api = this.api
+
       const dado = {
         id_certificado: this.id_certificado
       }
+
       axios
-      .put(api+"infos_cert", dado, {headers: {Authorization: "Bearer "+this.token}})
+      .put(api+"infos_cert", dado)
       .then((res) => {
-          console.log(res)
+          this.infosCert = res.data.informacoes[0]
+          console.log(this.infosCert) 
       })
       .catch((error) => {
-          console.log(error)
+          console.error(error)
       })
+    },
+    verificaUsuario(){
+      const dono = this.infosCert.id_usuario
+      const acessor = this.id_usuario
+      if(dono === acessor){
+        this.dono = true
+      }else{
+        this.dono = false
+      }
     }
   }
 }
