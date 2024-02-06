@@ -20,7 +20,7 @@ export default {
       id_certificado: null
     }
   },
-  mounted(){
+  created(){
     this.getIdCert()
   },
   methods:{
