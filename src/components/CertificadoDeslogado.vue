@@ -6,8 +6,8 @@
     </div>
     <div class="infos" v-else>
       <h1>{{ infos.nome_certificado }}</h1>
-      <h2>Emissor: {{ infos.emissor }}</h2>
-      <p>{{ infos.descricao }}</p>
+      <h2 v-if="infos.emissor">Emissor: {{ infos.emissor }}</h2>
+      <p v-if="infos.descricao">{{ infos.descricao }}</p>
       <a target="_blank" class="btn-full" :href="infos.url">Certificado full screen</a>
       <button class="btn-fechar" @click="altenarConteudo">Fechar informações</button>
     </div>
@@ -16,17 +16,25 @@
 <script>
 export default {
   name: 'CertificadoDeslogado',
-  created(){
-    
-  },
   data(){
     return{
       conteudo: true
     }
   },
+  created(){
+    this.checkNull()
+  },
   methods:{
     altenarConteudo(){
       this.conteudo = !this.conteudo
+    },
+    checkNull(){
+      if(this.infos.emissor == "null"){
+        this.infos.emissor=""
+      }
+      if(this.infos.descricao == "null"){
+        this.infos.descricao = ""
+      }
     }
   },
   props: {
