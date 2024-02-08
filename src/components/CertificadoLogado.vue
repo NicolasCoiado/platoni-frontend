@@ -11,6 +11,7 @@
     <input @change="inputFile" type="file" name="imagem" id="imagem" accept="image/png, image/jpeg" />
     <button class="btn-clean" v-show="file" @click="cleanFile">Retirar imagem</button>
     <input class="btn-submit" type="submit" value="Enviar edição"/>
+    <button class="btn-copiar" @click.prevent="copiarLink">Copiar link do certificado</button>
     <button class="btn-excluir"  @click="excluirCert">Excluir certificado</button>
   </form>
 </template>
@@ -28,13 +29,24 @@ export default {
       descricao: this.infos.descricao,
       imagem: this.infos.url,
       file: false,
-      msgFile: "Nova imagem"
+      msgFile: "Nova imagem",
     }
   },
   props: {
     infos: Object
   },
   methods:{
+    copiarLink() {
+      const el = document.createElement('textarea')
+      el.value = "localhost:5173"+this.$route.fullPath
+      el.setAttribute('readonly', '')
+      el.style.position = 'absolute'
+      el.style.left = '-9999px'
+      document.body.appendChild(el)
+      el.select()
+      document.execCommand('copy')
+      document.body.removeChild(el)
+    },
     inputFile(e){
       this.file = true
       this.msgFile = "Imagem selecionada"
@@ -198,6 +210,19 @@ label{
   margin-top: 1em;
 }
 .btn-excluir:hover{
+  box-shadow: 0em 0.3em 0.5em 0px #a8a8a8;
+}
+.btn-copiar{
+  font-size: 1em;
+  font-weight: bold;
+  color: #FFFF;
+  background-color: #4854ff;
+  border: none;
+  border-radius: 1.4em;
+  padding: 0.5em;
+  margin-top: 1em;
+}
+.btn-copiar:hover{
   box-shadow: 0em 0.3em 0.5em 0px #a8a8a8;
 }
 .btn-submit{
