@@ -89,7 +89,7 @@ export default {
       })
       .catch((error)=>{
         this.erro = true
-        console.error("Os campos de nome e imagem são obrigatórios.");
+        console.error("Os campos de nome e imagem são obrigatórios.", error);
       })
     }
   }
