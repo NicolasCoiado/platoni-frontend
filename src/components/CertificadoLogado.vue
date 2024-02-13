@@ -38,7 +38,7 @@ export default {
   methods:{
     copiarLink() {
       const el = document.createElement('textarea')
-      el.value = "localhost:5173"+this.$route.fullPath
+      el.value = this.infos.url
       el.setAttribute('readonly', '')
       el.style.position = 'absolute'
       el.style.left = '-9999px'
