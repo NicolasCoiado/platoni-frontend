@@ -38,7 +38,7 @@ export default {
   methods:{
     copiarLink() {
       const el = document.createElement('textarea')
-      el.value = this.infos.url
+      el.value = "https://platoni.vercel.app/certificado/publico/"+this.id_certificado
       el.setAttribute('readonly', '')
       el.style.position = 'absolute'
       el.style.left = '-9999px'

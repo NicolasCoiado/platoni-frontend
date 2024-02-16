@@ -8,6 +8,7 @@ import EditEmail from "../views/EditEmail.vue";
 import DeleteUsuario from "../views/DeleteUsuario.vue";
 import CadastroCert from "../views/CadastroCert.vue";
 import PageCert from "../views/PageCert.vue";
+import PublicCertificado from "../views/PublicCertificado.vue";
 
 const routes = [
   {
@@ -54,6 +55,11 @@ const routes = [
     path: "/certificado/:id",
     name: "PageCert",
     component: PageCert,
+  },
+  {
+    path: "/certificado/publico/:id",
+    name: "PubliCert",
+    component: PublicCertificado,
   },
 ];
 

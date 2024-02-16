@@ -1,7 +1,6 @@
 <template>
     <div  v-if="infosCert">
-        <CertificadoLogado v-if="dono" :infos="infosCert"/>
-        <CertificadoDeslogado v-else :infos="infosCert"/>
+        <CertificadoLogado v-show="dono" :infos="infosCert"/>
     </div>
     <div class="view" v-else>
         <p>Carregando...</p>
@@ -9,7 +8,6 @@
 </template>
 <script>
 import CertificadoLogado from "./CertificadoLogado.vue";
-import CertificadoDeslogado from "./CertificadoDeslogado.vue";
 import {useStore} from "../store/store.js";
 import axios from "axios";
 
@@ -17,7 +15,6 @@ export default {
   name: 'ViewCertificado',
   components: {
     CertificadoLogado,
-    CertificadoDeslogado
   },
   data(){
     return{
